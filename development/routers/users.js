@@ -3,10 +3,18 @@ const router = express.Router();
 const userModel = require('../models/users.model');
 
 
+router.get('/api',async(req,res) =>{
+    //res.render('mcqView.ejs')
+    const getUser = await userModel.find();
+    res.json(getUser);
+    
+    
+});
+
 router.get('/',async(req,res) =>{
         try{
             const getUser = await userModel.find();
-            console.log(getUser);
+            //console.log(getUser);
             res.render('userView',{
                  getUser
             });
