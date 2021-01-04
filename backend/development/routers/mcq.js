@@ -2,6 +2,7 @@ const { json } = require('body-parser');
 const express = require('express');
 const router = express.Router();
 const mcqModel = require('../models/mcq.model');
+const { route } = require('./users');
 
 router.get('/api',async(req,res) =>{
         //res.render('mcqView.ejs')
@@ -22,27 +23,57 @@ router.get('/',async(req,res) =>{
 
 
 router.post('/AddQue', async(req, res)=>{
-       
-       var ANS = [];
+       try{
+        var ANS = [];
+        for(var i = 0; i < req.body.answer.length; i++ )
+        {ANS.push({text : req.body.answer[i], score : req.body.score[i] }) }
+        const add = new mcqModel({
+                  questionText : req.body.question, 
+                  answers : ANS
+        })
+      // console.log(ANS,add );
+       const added  = await add.save();
+       if( added !=null)
+       res.redirect('/mcq');
 
-       for(var i = 0; i < req.body.answer.length; i++ )
+       }catch(err)
        {
-               ANS.push({text : req.body.answer[i], score : req.body.score[i] })
+        res.send("Error" + err)
        }
-
-       const add = new mcqModel({
-                 questionText : req.body.question, 
-                 answers : ANS
-       })
-      console.log(ANS,add );
-
-      const added  = await add.save();
-
-      if( added !=null)
-      res.redirect('/user');
+      
 
 });
 
+
+router.get('/EditMcq/:id', async(req, res)=>{
+        try{
+                const getMcq = await mcqModel.findById(req.params.id);
+
+                 res.render('editMcqView', {
+                                getMcq
+                       });
+    
+            }catch(err)
+            {
+                res.send('Error ' + err);
+            }
+})
+
+router.post('/EditMcq/:id',async(req, res)=>{   
+        
+})
+
+router.get('/DeleteMcq/:id', async(req, res)=>{
+
+        try{
+            const { id } = req.params;
+            await mcqModel.remove({_id: id});
+            res.redirect('/mcq');
+        }catch(err)
+        {
+            res.send("Error" + err);
+        }
+    });
 
 
 module.exports = router;

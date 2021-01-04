@@ -1,5 +1,6 @@
 <%- include('main/header'); -%>
 
+
 <body>
   <!-- Sidenav -->
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
@@ -188,7 +189,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Question</label>
-                          <input id="input-address" class="form-control" name="question" placeholder="Question" type="text">
+                          <input id="input-address" class="form-control" name="question" placeholder="Question" type="text" value="">
                         </div>
                       </div>
                     </div>
@@ -280,10 +281,10 @@
                       <li><%=  getQue[i].questionText %></li>
                     </th>
                     <td>
-                    <a href="user/EditUser/<%=  getQue[i]._id %>"><button type="button" class="btn btn-warning">EDIT</button></a> 
+                    <a href="mcq/EditMcq/<%=  getQue[i]._id %>"><button disabled type="button" class="btn btn-warning">EDIT</button></a> 
                     </td>
                     <td>
-                      <a href="user/EditUser/<%=  getQue[i]._id %>"><button type="button" class="btn btn-danger">DEL</button></a>
+                      <a href="mcq/DeleteMcq/<%=  getQue[i]._id %>"><button type="button" class="btn btn-danger">DEL</button></a>
                     </td>
                   </tr>
                   <% } %>
