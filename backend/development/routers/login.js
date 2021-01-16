@@ -4,6 +4,8 @@ const adminModel = require('../models/admin.model');
 const LocalStrategy = require("passport-local");
 const passportLocalMongoose =  require("passport-local-mongoose");
 const passport = require("passport");
+const mcqModel = require('../models/mcq.model');
+const userModel = require('../models/users.model');
 
 
 passport.use(new LocalStrategy(adminModel.authenticate())); 
@@ -18,7 +20,13 @@ router.get("/", function (req, res) {
   
 // Showing secret page 
 router.get("/dashboard", isLoggedIn, async (req, res) => { 
-    res.render("dashboardView"); 
+    const mcqCount = await mcqModel.find({}).countDocuments();
+    const usersCount = await userModel.find({}).countDocuments();
+   
+    res.render("dashboardView",{
+        mcqCount,
+        usersCount
+    }); 
 }); 
   
 // Handling user signup 

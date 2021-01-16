@@ -9,15 +9,10 @@ const userModel = require('../models/users.model');
 
 router.get('/',async(req,res) =>{
 
-        const mcqCount = await mcqModel.find().countDocuments();
-        const usersCount = await userModel.find().countDocuments();
-        res.render('dashboardView',{
-                mcqCount,
-                usersCount
-        });
+      const mcqCount = await mcqModel.find();
+      console.log(mcqCount);
         
 });
-
 
 
 
