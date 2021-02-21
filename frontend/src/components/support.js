@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Company(){
+function Support(){
     return(
         <section className="py-7">
 
@@ -25,4 +25,4 @@ function Company(){
     );
 }
 
-export default Company;
+export default Support;
