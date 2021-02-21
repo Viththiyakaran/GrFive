@@ -24,7 +24,7 @@ function Navbar()
                 <li className="nav-item"><a className="nav-link fw-medium" href="#faq">FAQ</a></li>
               </ul>
               <form className="ps-lg-5">
-                <button className="btn btn-lg btn-primary rounded-pill order-0" type="submit">Try for free</button>
+               <a href="#"><button className="btn btn-lg btn-primary rounded-pill order-0">Login</button> </a>
               </form>
             </div>
           </div>
