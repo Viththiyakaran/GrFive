@@ -15,7 +15,7 @@ function Navbar()
               <div className="text-1000">Lab</div>
             </a>
             <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-            <div className="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <div className="collapse navbar-collapse  mt-4 mt-lg-0" id="navbarSupportedContent">
               <ul className="navbar-nav ms-auto pt-2 pt-lg-0">
                 <li className="nav-item"><a className="nav-link fw-medium active" aria-current="page" href="#">Home</a></li>
                 <li className="nav-item"><a className="nav-link fw-medium" href="#features">Key Features</a></li>

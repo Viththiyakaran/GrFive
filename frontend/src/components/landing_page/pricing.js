@@ -14,13 +14,6 @@ function Pricing()
           </div>
           <div className="row flex-center">
             <div className="col-12 mb-3">
-              <div className="d-flex justify-content-center">
-                <label className="form-check-label me-2" for="customSwitch1">Monthly</label>
-                <div className="form-check form-switch">
-                  <input className="form-check-input" id="customSwitch1" type="checkbox" checked="checked" />
-                  <label className="form-check-label align-top" for="customSwitch1">Yearly</label>
-                </div>
-              </div>
             </div>
             <div className="col-lg-4">
               <div className="card shadow-lg mb-4 border-0">
