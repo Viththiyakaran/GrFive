@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 var bg = {
     backgroundImage: 'url(/assets/img/illustrations/hero-bg.png)',
     backgroundPosition:'Bottom',
@@ -24,7 +25,7 @@ function Navbar()
                 <li className="nav-item"><a className="nav-link fw-medium" href="#faq">FAQ</a></li>
               </ul>
               <form className="ps-lg-5">
-               <a href="#"><button className="btn btn-lg btn-primary rounded-pill order-0">Login</button> </a>
+              <NavLink to='/login'><button  className="btn btn-lg btn-primary rounded-pill order-0">Login</button></NavLink> 
               </form>
             </div>
           </div>
