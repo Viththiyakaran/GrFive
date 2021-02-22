@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Additional2()
-{
+
+class Additional2 extends Component{
+  render(){
     return(
       <section className="py-6">
 
@@ -16,6 +17,7 @@ function Additional2()
       </div>
     </section>
     )
+  }
 }
 
 export default Additional2;

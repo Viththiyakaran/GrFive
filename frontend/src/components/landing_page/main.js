@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Navbar from'./navbar';
 import Company from './support';
@@ -11,23 +11,24 @@ import Testimonial from  './testimonial';
 import Faq from  './faq';
 import Download from  './download';
 import Footer from  './footer';
-function LandingPage()
-{
-    return(
-        <div>
-            <Navbar/>
-            <Company/>
-            <Features/>
-            <Additional/>
-            <Additional_2/>
-            <Choose/>
-            < Pricing/>
-            <Testimonial/>
-            <Faq/>
-            <Download/>
-            <Footer/>
-        </div>
-    )
-}
 
+class LandingPage extends Component{
+    render(){
+        return(
+            <div>
+                <Navbar/>
+                <Company/>
+                <Features/>
+                <Additional/>
+                <Additional_2/>
+                <Choose/>
+                < Pricing/>
+                <Testimonial/>
+                <Faq/>
+                <Download/>
+                <Footer/>
+            </div>
+        )
+    }
+}
 export default LandingPage;
