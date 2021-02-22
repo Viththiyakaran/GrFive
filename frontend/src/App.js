@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/landing_page/main';
 import Login from './components/login/login';
-import { Route,BrowserRouter as Router, Switch} from 'react-router-dom';
+import Formtest from './components/login/form';
+import { Route,BrowserRouter as Router, Switch, useHistory} from 'react-router-dom';
 
 
 class App extends Component{
@@ -12,6 +13,7 @@ class App extends Component{
         <Switch>
            <Route path="/" exact component={LandingPage}/> 
            <Route path="/login" exact component={Login}/> 
+           <Route path="/form" exact component={Formtest }/> 
         </Switch>
       </Router>
     );
