@@ -1,16 +1,27 @@
 
 import React, { Component } from 'react';
- 
+import axios from 'axios';
+import { data } from 'jquery';
 
 
 class Formtest extends Component{
     
+
+ 
 constructor(props){ 
     super(props);
-    this.state = { username : ''}
+    this.state = { username : '', data : [] }
     this.handleUsername = this.handleUsername.bind(this);
     this.subForm = this.subForm.bind(this);
 };
+
+
+get = () =>{
+    axios.get("https://jsonplaceholder.typicode.com/posts").then(result => {
+        console.log(result.data)
+        this.setState({ data : result.data})
+    })
+}
 
 handleUsername(event){ 
     this.setState ({username : event.target.value })
@@ -33,7 +44,14 @@ subForm(event){
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <button className="btn btn-primary" type="submit"> Submit </button>
+
+                    
                 </form>
+
+                <button className="btn btn-primary" onClick={this.get}> GET </button>
+                    <button className="btn btn-primary" onClick={this.get}>POST </button>
+            
+                { this.state.data.map(x=> <div key={x.id}>{x.title} </div>)}
             </div>
         )
     }

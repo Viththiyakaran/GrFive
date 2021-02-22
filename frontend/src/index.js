@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import 'bootstrap/dist/js/bootstrap.bundle.js'
-import 'popper.js'
+//import 'bootstrap/dist/js/bootstrap.bundle.js'
+//import 'popper.js'
 import App from './App';
 
 
