@@ -17,7 +17,7 @@ constructor(props){
 
 
 get = () =>{
-    axios.get("https://jsonplaceholder.typicode.com/posts").then(result => {
+    axios.get("https://jsonplaceholder.typicode.com/todos").then(result => {
         console.log(result.data)
         this.setState({ data : result.data})
     })
@@ -51,7 +51,7 @@ subForm(event){
                 <button className="btn btn-primary" onClick={this.get}> GET </button>
                     <button className="btn btn-primary" onClick={this.get}>POST </button>
             
-                { this.state.data.map(x=> <div key={x.id}>{x.title} </div>)}
+                { this.state.data.map(x=> <div key={x.id} >{x.title} </div>)}
             </div>
         )
     }
