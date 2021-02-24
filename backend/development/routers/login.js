@@ -17,6 +17,9 @@ passport.deserializeUser(adminModel.deserializeUser());
 router.get("/", function (req, res) { 
     res.render("indexView"); 
 }); 
+
+
+
   
 // Showing secret page 
 router.get("/dashboard", isLoggedIn, async (req, res) => { 
