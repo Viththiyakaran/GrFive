@@ -10,16 +10,32 @@ class Formtest extends Component{
  
 constructor(props){ 
     super(props);
-    this.state = { username : '', data : [] }
+    this.state = { username : '', data : [] , record : {  username : "NA"}}
     this.handleUsername = this.handleUsername.bind(this);
     this.subForm = this.subForm.bind(this);
 };
 
 
 get = () =>{
-    axios.get("https://jsonplaceholder.typicode.com/todos").then(result => {
+    axios.get("http://localhost:3001/user/api").then(result => {
         console.log(result.data)
         this.setState({ data : result.data})
+    })
+}
+
+
+post = () =>{
+    const abc = {about: "A beautiful ",
+    address: "397, maim road,navatkuda, batticaloa",
+    city: "Batticaloa",
+    email: "battikaran6@gmail.com",
+    fullname: "Raja Kumar",
+    password: "12345",
+    phone: 652223037,
+    username: "Techcube"};
+    axios.post("http://localhost:3001/user/NewUser/api",abc).then(result => {
+        console.log(result.data)
+        this.setState({ record : result.data})
     })
 }
 
@@ -49,12 +65,16 @@ subForm(event){
                 </form>
 
                 <button className="btn btn-primary" onClick={this.get}> GET </button>
-                    <button className="btn btn-primary" onClick={this.get}>POST </button>
+                    <button className="btn btn-primary" onClick={this.post}>POST </button>
             
-                { this.state.data.map(x=> <div key={x.id} >{x.title} </div>)}
+                { this.state.data.map(x=> <div key={x._id} >{x.username} </div>)}
+
+                { this.state.record.username};
             </div>
         )
     }
 }
+
+
 
 export default Formtest;
