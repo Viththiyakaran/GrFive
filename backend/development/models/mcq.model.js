@@ -5,9 +5,6 @@ const questionSchema  = new mongoose.Schema({
 
     text : {
         type :  String
-    },
-    score : {
-        type : Number
     }
 
 });
@@ -17,8 +14,15 @@ const mcqSchema = new mongoose.Schema({
         type : String,
         //required : true
     },
-    answers : [questionSchema]
+    choies  : [questionSchema],
+
+    answer : {
+        type : String,
+        //required : true
+    }
 
 });
 
 module.exports = mongoose.model('mcq',mcqSchema);
+
+

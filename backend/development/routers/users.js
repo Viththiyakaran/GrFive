@@ -7,9 +7,31 @@ router.get('/api',async(req,res) =>{
     //res.render('mcqView.ejs')
     const getUser = await userModel.find();
     res.json(getUser);
-    
-    
+
 });
+
+router.post('/NewUser/api',async(req, res)=>{
+    const add = new userModel({
+        username : req.body.username,
+        fullname : req.body.fullname,
+        password : req.body.password,
+        email : req.body.email,
+        phone : req.body.phone,
+        address : req.body.add,
+        city : req.body.city,
+        about : req.body.about
+    });
+    try{    
+        const added = await add.save();
+        //res.json(added);
+        //console.log(added);
+    }catch(err)
+    {
+        res.send("Error"  + err);
+    }
+}); 
+
+
 
 router.get('/',async(req,res) =>{
         try{

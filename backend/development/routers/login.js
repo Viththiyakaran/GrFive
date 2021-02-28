@@ -16,9 +16,8 @@ passport.deserializeUser(adminModel.deserializeUser());
 // Showing home page 
 router.get("/", function (req, res) { 
     res.render("indexView"); 
+   
 }); 
-
-
 
   
 // Showing secret page 

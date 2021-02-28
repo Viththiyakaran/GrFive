@@ -25,21 +25,22 @@ router.get('/',async(req,res) =>{
 router.post('/AddQue', async(req, res)=>{
        try{
         var ANS = [];
-        for(var i = 0; i < req.body.answer.length; i++ )
-        {ANS.push({text : req.body.answer[i], score : req.body.score[i] }) }
+        for(var i = 0; i < req.body.choies.length; i++ )
+        {ANS.push({text : req.body.choies[i]}) }
         const add = new mcqModel({
                   questionText : req.body.question, 
-                  answers : ANS
+                  choies : ANS,
+                  answer : req.body.answer
         })
-      // console.log(ANS,add );
-       const added  = await add.save();
+        //console.log(ANS );
+      const added  = await add.save();
        if( added !=null)
        res.redirect('/mcq');
 
        }catch(err)
        {
         res.send("Error" + err)
-       }
+       } 
       
 
 });

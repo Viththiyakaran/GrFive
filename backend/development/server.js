@@ -32,21 +32,6 @@ app.use(passport.session());
 const loginRouter  = require('./routers/login');
 app.use('/',loginRouter);
 
-
-//TEST CREATE API 
-
-app.get("/test/api", function(req,res){
-    res.json({
-        message  : 'Hello welcome api of test'
-    });
-});
-
-app.post("/test/login",function(req,res){
-    res.json({
-        message  : 'Hello Login'
-    });
-});
-
 //const dashboardRouter = require('./routers/dashboard');
 //app.use('/dashboard', dashboardRouter);
 
