@@ -32,8 +32,8 @@ app.use(passport.session());
 const loginRouter  = require('./routers/login');
 app.use('/',loginRouter);
 
-//const dashboardRouter = require('./routers/dashboard');
-//app.use('/dashboard', dashboardRouter);
+const videoRouter = require('./routers/videos');
+app.use('/videos', videoRouter);
 
 const usersRouter = require('./routers/users');
 app.use('/user', usersRouter);

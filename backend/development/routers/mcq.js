@@ -32,9 +32,10 @@ router.post('/AddQue', async(req, res)=>{
                   choies : ANS,
                   answer : req.body.answer
         })
-        //console.log(ANS );
+        console.log(ANS );
       const added  = await add.save();
        if( added !=null)
+
        res.redirect('/mcq');
 
        }catch(err)
