@@ -6,6 +6,7 @@ const passportLocalMongoose =  require("passport-local-mongoose");
 const passport = require("passport");
 const mcqModel = require('../models/mcq.model');
 const userModel = require('../models/users.model');
+const videoModel = require('../models/video.model');
 
 
 passport.use(new LocalStrategy(adminModel.authenticate())); 
@@ -30,6 +31,9 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
         usersCount
     }); 
 }); 
+
+
+
   
 // Handling user signup 
 router.post("/NewAdmin",async (req, res) =>{ 
@@ -44,7 +48,13 @@ router.post("/NewAdmin",async (req, res) =>{
   
         passport.authenticate("local")( 
             req, res, function () { 
-            res.render("dashboardView"); 
+                const mcqCount = mcqModel.find({}).countDocuments();
+                const usersCount =  userModel.find({}).countDocuments();
+               
+                res.render("dashboardView",{
+                    mcqCount,
+                    usersCount
+                }); 
         }); 
     }); 
 }); 
@@ -77,6 +87,32 @@ function isLoggedIn(req, res, next) {
 router.get('/profile',isLoggedIn,async(req,res) =>{
         res.render('adminView');
         
+});
+
+
+router.get('/mcq',isLoggedIn,async(req,res) =>{
+
+     //res.render('mcqView.ejs')
+     const getQue = await mcqModel.find();
+     //res.json(getQue);
+     res.render('mcqView',{
+            getQue 
+     })
+    
+    
+});
+
+
+router.get('/videos',isLoggedIn,async(req,res) =>{
+
+    //res.render('mcqView.ejs')
+    const getVideo = await videoModel.find();
+    //res.json(getQue);
+    res.render('videosView',{
+        getVideo
+    })
+   
+   
 });
 
 

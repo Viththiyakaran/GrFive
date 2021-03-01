@@ -8,11 +8,9 @@ const videoModel = require('../models/video.model');
 
 router.get('/',async(req,res) =>{
         try{
-            const getVideo = await videoModel.find();
+            
             //console.log(getVideo);
-           res.render('videosView',{
-                getVideo
-            });
+           res.render('videosView');
         
         }catch(err)
         {
