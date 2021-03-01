@@ -23,13 +23,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/mcq">
+              <a class="nav-link" href="/mcq">
                 <i class="ni ni-planet text-orange"></i>
                 <span class="nav-link-text">MCQ</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/videos">
+              <a class="nav-link  active" href="/videos">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Videos</span>
               </a>
@@ -181,77 +181,44 @@
             </div>
             <div class="modal-body">
               <div class="card-body">
-                <form action="/mcq/AddQue" method="POST">
+                <form action="/videos/AddViedo" method="POST">
                   <!-- Address -->
-                  <h6 class="heading-small text-muted mb-4">Add New Question</h6>
+                  <h6 class="heading-small text-muted mb-4">Add New Video</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-address">Question</label>
-                          <input id="input-address" class="form-control" name="question" placeholder="Question" type="text" value="">
+                          <label class="form-control-label" for="input-address">Title</label>
+                          <input id="input-address" class="form-control" name="title" placeholder="title" type="text" value="">
                         </div>
                       </div>
                     </div>
                   </div>
                   <hr class="my-4" />
-                  <h6 class="heading-small text-muted mb-4">Answer and Score</h6>
-                  <div class="pl-lg-4">
-                    
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="form-control-label" for="input-first-name">Answer 01</label>
-                            <div class="input-group">
-                                <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer" >
-                              
-                            </div>
-                         
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Answer 02</label>
-                          <div class="input-group">
-                              <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer" >
-                             
-                          </div>
-                         
-                           </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Answer 03</label>
-                          <div class="input-group">
-                              <input type="text" id="input-first-name"  name="choies[]"  class="form-control" placeholder="Answer" >
-                           
-                          </div>
-                         
-                           </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Answer 04</label>
-                          <div class="input-group">
-                              <input type="text" id="input-first-name"  name="choies[]"  class="form-control" placeholder="Answer" >
-                             
-                          </div>
-                         
-                           </div>
-                      </div>
-
-                     
-                    </div>
-                  </div>
-                  <hr class="my-4" />
+                  <h6 class="heading-small text-muted mb-4">Video Link</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Question</label>
-                          <input id="input-address" class="form-control" name="answer" placeholder="" type="text" value="">
+                          <input id="input-address" class="form-control" name="link" placeholder="Video Link" type="text" value="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="heading-small text-muted mb-4">Video Link</h6>
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-address">Question</label>
+                          <select name="category" class="form-control"> 
+                              <option value="Language"> Language </option>
+                              <option value="Scicence"> Scicence </option>
+                              <option value="Maths"> Maths </option>
+                              <option value="Religion"> Religion </option>
+                              <option value="General "> General  </option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -289,16 +256,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% for(var i=0; i< getQue.length; i++) {%>
+                  <% for(var i=0; i< getVideo.length; i++) {%>
                   <tr>
                     <th scope="row">
-                      <li><%=  getQue[i].questionText %></li>
+                      <li><%=  getVideo[i].title %></li>
                     </th>
                     <td>
-                    <a href="mcq/EditMcq/<%=  getQue[i]._id %>"><button disabled type="button" class="btn btn-warning">EDIT</button></a> 
+                    <a href="mcq/EditMcq/<%=  getVideo[i]._id %>"><button disabled type="button" class="btn btn-warning">EDIT</button></a> 
                     </td>
                     <td>
-                      <a href="mcq/DeleteMcq/<%=  getQue[i]._id %>"><button type="button" class="btn btn-danger">DEL</button></a>
+                      <a href="mcq/DeleteMcq/<%=  getVideo[i]._id %>"><button type="button" class="btn btn-danger">DEL</button></a>
                     </td>
                   </tr>
                   <% } %>

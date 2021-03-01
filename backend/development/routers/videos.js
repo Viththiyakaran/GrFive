@@ -3,43 +3,17 @@ const router = express.Router();
 const videoModel = require('../models/video.model');
 
 
-router.get('/api',async(req,res) =>{
-    //res.render('mcqView.ejs')
-    const getUser = await videoModel.find();
-    res.json(getUser);
-
-});
-
-router.post('/NewUser/api',async(req, res)=>{
-    const add = new videoModel({
-        username : req.body.username,
-        fullname : req.body.fullname,
-        password : req.body.password,
-        email : req.body.email,
-        phone : req.body.phone,
-        address : req.body.add,
-        city : req.body.city,
-        about : req.body.about
-    });
-    try{    
-        const added = await add.save();
-        //res.json(added);
-        //console.log(added);
-    }catch(err)
-    {
-        res.send("Error"  + err);
-    }
-}); 
 
 
 
 router.get('/',async(req,res) =>{
         try{
-            const getUser = await videoModel.find();
-            //console.log(getUser);
-            res.render('userView',{
-                 getUser
+            const getVideo = await videoModel.find();
+            //console.log(getVideo);
+           res.render('videosView',{
+                getVideo
             });
+        
         }catch(err)
         {
             res.send("Error " + err);
@@ -47,29 +21,24 @@ router.get('/',async(req,res) =>{
         
 });
 
-router.post('/NewUser',async(req, res)=>{
+router.post('/AddViedo',async(req, res)=>{
     const add = new videoModel({
-        username : req.body.username,
-        fullname : req.body.fullname,
-        password : req.body.password,
-        email : req.body.email,
-        phone : req.body.phone,
-        address : req.body.add,
-        city : req.body.city,
-        about : req.body.about
+        title : req.body.title,
+        category : req.body.category,
+        link : req.body.link
     });
     try{    
         const added = await add.save();
         //res.json(added);
-        //console.log(added);
+       // console.log(add);
         if( added !=null)
         {
-            res.redirect('/user');
+            res.redirect('/videos');
         }
         else
         {
             console.log(added);
-        }
+        } 
         
     }catch(err)
     {
@@ -77,7 +46,8 @@ router.post('/NewUser',async(req, res)=>{
     }
 }); 
 
-router.get('/EditUser/:id', async( req, res )=>{
+
+router.get('/EditVideo/:id', async( req, res )=>{
         try{
             const getUser = await videoModel.findById(req.params.id);
             res.render('editUserView', {
@@ -91,11 +61,11 @@ router.get('/EditUser/:id', async( req, res )=>{
 });
 
 
-router.post('/EditUser/:id', async(req,res)=>{
+router.post('/EditVideo/:id', async(req,res)=>{
     try{
         const { id } = req.params;
         await videoModel.update({_id: id}, req.body);
-        res.redirect('/user');
+        res.redirect('/videos');
 
     }catch(err)
     {
@@ -103,17 +73,21 @@ router.post('/EditUser/:id', async(req,res)=>{
     }
 });
 
-router.get('/DeleteUser/:id', async(req, res)=>{
+
+
+router.get('/DeleteVideo/:id', async(req, res)=>{
 
     try{
         const { id } = req.params;
         await videoModel.remove({_id: id});
-        res.redirect('/user');
+        res.redirect('/videos');
     }catch(err)
     {
         res.send("Error" + err);
     }
 });
+
+
 
 
 module.exports = router;
