@@ -33,7 +33,7 @@ router.post('/AddQue', async(req, res)=>{
                   answer : req.body.answer
         })
         console.log(ANS );
-      const added  = await add.save();
+        const added  = await add.save();
        if( added !=null)
 
        res.redirect('/mcq');
@@ -54,16 +54,59 @@ router.get('/EditMcq/:id', async(req, res)=>{
                  res.render('editMcqView', {
                                 getMcq
                        });
-    
+
+                      
             }catch(err)
             {
                 res.send('Error ' + err);
             }
 })
 
-router.post('/EditMcq/:id',async(req, res)=>{   
-        
+router.post('/UpdateMcq/:id',async(req, res)=>{   
+       
+    try{
+        const { id } = req.params;
+        var ANS = [];
+        for(var i = 0; i < req.body.choies.length; i++ )
+        {ANS.push({text : req.body.choies[i]}) }
+        const add = new mcqModel({
+                  questionText : req.body.question, 
+                  choies : ANS,
+                  answer : req.body.answer
+        })
+
+        // await mcqModel.updateOne({id}, add  );
+        console.log(add + " Save" );
+    
+
+
+        await mcqModel.updateOne({_id:id}, { $set : { choies : ANS , questionText : req.body.question , answer : req.body.answer} } );
+
+        console.log("workd");
+
+
+
+
+
+
+
+
+
+        res.redirect('/mcq');
+
+
+    }catch(err)
+    {
+        res.send('Error' + err)
+    }
+
 })
+
+
+
+
+
+
 
 router.get('/DeleteMcq/:id', async(req, res)=>{
 

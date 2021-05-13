@@ -6,7 +6,6 @@ const bodyparser = require('body-parser');
 const passport = require("passport");
 
 
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();

@@ -181,7 +181,7 @@
             </div>
             <div class="modal-body">
               <div class="card-body">
-                <form action="/mcq/EditMcq/<%=  getMcq._id %>" method="POST">
+                <form action="/mcq/UpdateMcq/<%=  getMcq._id %>" method="POST">
                   <!-- Address -->
                   <h6 class="heading-small text-muted mb-4">Add New Question</h6>
                   <div class="pl-lg-4">
@@ -197,14 +197,12 @@
                   <hr class="my-4" />
                   <h6 class="heading-small text-muted mb-4">Answer and Score</h6>
                   <div class="pl-lg-4">
-                    
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label" for="input-first-name">Answer 01</label>
                             <div class="input-group">
-                                <input type="text" id="input-first-name"  name="answer[]" class="form-control" placeholder="Answer" value="<%=  getMcq.answers[0].text %>">
-                                <input type="number" id="input-first-name"  name="score[]" class="form-control" placeholder="Score" value="<%=  getMcq.answers[0].score %>">
+                                <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer"  value="<%=  getMcq.choies[0].text %>" >
                             </div>
                          
                         </div>
@@ -213,36 +211,50 @@
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">Answer 02</label>
                           <div class="input-group">
-                              <input type="text" id="input-first-name"  name="answer[]" class="form-control" placeholder="Answer" value="<%=  getMcq.answers[1].text %>">
-                              <input type="number" id="input-first-name"  name="score[]" class="form-control" placeholder="Score" value="<%=  getMcq.answers[1].score %>">
+                              <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer"  value="<%=  getMcq.choies[1].text %>">
                           </div>
                          
                            </div>
                       </div>
-                    </div>
+                    </div>               
+                  </div>
+                  <div class="pl-lg-4">
+                    
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Answer 03</label>
-                          <div class="input-group">
-                              <input type="text" id="input-first-name"  name="answer[]"  class="form-control" placeholder="Answer"  value="<%=  getMcq.answers[2].text %>">
-                              <input type="number" id="input-first-name"  name="score[]" class="form-control" placeholder="Score" value="<%=  getMcq.answers[2].score %>">
-                          </div>
-                         
-                           </div>
+                            <label class="form-control-label" for="input-first-name">Answer 01</label>
+                            <div class="input-group">
+                                <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer"  value="<%=  getMcq.choies[2].text %>" >                             
+                            </div>                        
+                        </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Answer 04</label>
+                          <label class="form-control-label" for="input-first-name">Answer 02</label>
                           <div class="input-group">
-                              <input type="text" id="input-first-name"  name="answer[]"  class="form-control" placeholder="Answer" value="<%=  getMcq.answers[3].text %>">
-                              <input type="number" id="input-first-name"  name="score[]" class="form-control" placeholder="Score" value="<%=  getMcq.answers[3].score %>">
+                              <input type="text" id="input-first-name"  name="choies[]" class="form-control" placeholder="Answer"  value="<%=  getMcq.choies[3].text %>">
                           </div>
-                         
                            </div>
                       </div>
                     </div>
+                    
+                  </div> 
+
+
+                  <hr class="my-4" />
+                  <div class="pl-lg-4">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-address">Answer</label>
+                          <input id="input-address" class="form-control" name="answer" placeholder="" type="text" value="<%=  getMcq.answer %>">
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+
               </div>
             </div>
             <div class="modal-footer">
