@@ -74,39 +74,14 @@ router.post('/UpdateMcq/:id',async(req, res)=>{
                   choies : ANS,
                   answer : req.body.answer
         })
-
-        // await mcqModel.updateOne({id}, add  );
-        console.log(add + " Save" );
-    
-
-
         await mcqModel.updateOne({_id:id}, { $set : { choies : ANS , questionText : req.body.question , answer : req.body.answer} } );
-
-        console.log("workd");
-
-
-
-
-
-
-
-
-
         res.redirect('/mcq');
-
-
     }catch(err)
     {
         res.send('Error' + err)
     }
 
 })
-
-
-
-
-
-
 
 router.get('/DeleteMcq/:id', async(req, res)=>{
 

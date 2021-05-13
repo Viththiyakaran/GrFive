@@ -47,9 +47,9 @@ router.post('/AddViedo',async(req, res)=>{
 
 router.get('/EditVideo/:id', async( req, res )=>{
         try{
-            const getUser = await videoModel.findById(req.params.id);
-            res.render('editUserView', {
-                     getUser
+            const getVideo= await videoModel.findById(req.params.id);
+            res.render('editVideosView', {
+                    getVideo
             });
 
         }catch(err)
@@ -59,7 +59,7 @@ router.get('/EditVideo/:id', async( req, res )=>{
 });
 
 
-router.post('/EditVideo/:id', async(req,res)=>{
+router.post('/UpdateVideo/:id', async(req,res)=>{
     try{
         const { id } = req.params;
         await videoModel.update({_id: id}, req.body);

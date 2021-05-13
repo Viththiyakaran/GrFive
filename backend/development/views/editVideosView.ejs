@@ -167,7 +167,7 @@
     <div class="container-fluid mt--6">
       <div class="row"> 
 
-        <div class="col-xl-8">
+        <div class="col-xl-12">
           <div class="card">
             <div class="card-header border-0">
               <div class="row align-items-center">
@@ -181,15 +181,15 @@
             </div>
             <div class="modal-body">
               <div class="card-body">
-                <form action="/videos/UpdateVideo/<%=  getVideo._id %>" method="POST">
+                <form action="/videos/AddViedo" method="POST">
                   <!-- Address -->
                   <h6 class="heading-small text-muted mb-4">Add New Video</h6>
                   <div class="pl-lg-4">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-address">Title</label>
-                          <input id="input-address" class="form-control" name="title" placeholder="title" type="text" value="">
+                          <label class="form-control-label" for="input-address">Title <%=  getVideo._id %> </label>
+                          <input id="input-address" class="form-control" name="title" placeholder="title" type="text" value="<%=  getVideo.title %>">
                         </div>
                       </div>
                     </div>
@@ -201,7 +201,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Question</label>
-                          <input id="input-address" class="form-control" name="link" placeholder="Video Link" type="text" value="">
+                          <input id="input-address" class="form-control" name="link" placeholder="Video Link" type="text" value="<%=  getVideo.link %>">
                         </div>
                       </div>
                     </div>
@@ -212,7 +212,8 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="form-control-label" for="input-address">Question</label>
-                          <select name="category" class="form-control"> 
+                          <select name="category"  class="form-control"> 
+                            <option value="<%=  getVideo.category %>"> <%=  getVideo.category %> </option>
                               <option value="Language"> Language </option>
                               <option value="Scicence"> Scicence </option>
                               <option value="Maths"> Maths </option>
@@ -233,47 +234,7 @@
           </form>
           </div>
         </div>
-        <div class="col-xl-4">
-          <div class="card">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0">Page visits</h3>
-                </div>
-                <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">See all</a>
-                </div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% for(var i=0; i< getVideo.length; i++) {%>
-                  <tr>
-                    <th scope="row">
-                      <li><%=  getVideo[i].title %></li>
-                    </th>
-                    <td>
-                    <a href="videos/EditVideo/<%=  getVideo[i]._id %>"><button  type="button" class="btn btn-warning">EDIT</button></a> 
-                    </td>
-                    <td>
-                      <a href="videos/DeleteVideo/<%=  getVideo[i]._id %>"><button type="button" class="btn btn-danger">DEL</button></a>
-                    </td>
-                  </tr>
-                  <% } %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        
        
       </div>
 
