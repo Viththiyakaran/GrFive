@@ -25,10 +25,12 @@ router.get("/", function (req, res) {
 router.get("/dashboard", isLoggedIn, async (req, res) => { 
     const mcqCount = await mcqModel.find({}).countDocuments();
     const usersCount = await userModel.find({}).countDocuments();
+    const videoCount = await videoModel.find({}).countDocuments();
    
     res.render("dashboardView",{
         mcqCount,
-        usersCount
+        usersCount,
+        videoCount 
     }); 
 }); 
 
@@ -110,6 +112,18 @@ router.get('/videos',isLoggedIn,async(req,res) =>{
     //res.json(getQue);
     res.render('videosView',{
         getVideo
+    })
+   
+   
+});
+
+router.get('/user',isLoggedIn,async(req,res) =>{
+
+    //res.render('mcqView.ejs')
+    const getUser = await userModel.find();
+    //res.json(getQue);
+    res.render('userView',{
+        getUser 
     })
    
    
